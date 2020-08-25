@@ -1,0 +1,345 @@
+PS C:\Users\Cameron\Local\wamp64\www\Consulting_EduRAIN_App-API> composer clearcache
+Cache directory does not exist (cache-vcs-dir):
+Clearing cache (cache-repo-dir): C:\Users\Cameron\AppData\Local\Composer\repo
+Clearing cache (cache-files-dir): C:\Users\Cameron\AppData\Local\Composer\files
+Clearing cache (cache-dir): C:\Users\Cameron\AppData\Local\Composer
+All caches cleared.
+PS C:\Users\Cameron\Local\wamp64\www\Consulting_EduRAIN_App-API> composer update
+Loading composer repositories with package information
+Updating dependencies (including require-dev)
+Package operations: 134 installs, 0 updates, 0 removals
+  - Installing ocramius/package-versions (1.5.1): Downloading (100%)
+  - Installing psr/simple-cache (1.0.1): Downloading (100%)
+  - Installing psr/log (1.1.2): Downloading (100%)
+  - Installing psr/http-message (1.0.1): Downloading (100%)
+  - Installing algolia/algoliasearch-client-php (2.5.0): Downloading (100%)
+  - Installing mtdowling/jmespath.php (2.4.0): Downloading (100%)
+  - Installing guzzlehttp/promises (v1.3.1): Downloading (100%)
+  - Installing ralouphie/getallheaders (3.0.3): Downloading (100%)
+  - Installing guzzlehttp/psr7 (1.6.1): Downloading (100%)
+  - Installing guzzlehttp/guzzle (6.4.1): Downloading (100%)
+  - Installing aws/aws-sdk-php (3.123.0): Downloading (100%)
+  - Installing hashids/hashids (4.0.0): Downloading (100%)
+  - Installing symfony/polyfill-ctype (v1.13.0): Downloading (100%)
+  - Installing phpoption/phpoption (1.5.2): Downloading (100%)
+  - Installing vlucas/phpdotenv (v3.6.0): Downloading (100%)
+  - Installing symfony/polyfill-php72 (v1.13.0): Downloading (100%)
+  - Installing symfony/polyfill-mbstring (v1.13.0): Downloading (100%)
+  - Installing symfony/var-dumper (v4.4.0): Downloading (100%)
+  - Installing symfony/polyfill-intl-idn (v1.13.0): Downloading (100%)
+  - Installing symfony/mime (v5.0.0): Downloading (100%)
+  - Installing symfony/http-foundation (v4.4.0): Downloading (100%)
+  - Installing symfony/polyfill-php73 (v1.13.0): Downloading (100%)
+  - Installing symfony/event-dispatcher-contracts (v1.1.7): Downloading (100%)
+  - Installing psr/container (1.0.0): Downloading (100%)
+  - Installing psr/cache (1.0.1): Downloading (100%)
+  - Installing symfony/event-dispatcher (v4.4.0): Downloading (100%)
+  - Installing symfony/debug (v4.4.0): Downloading (100%)
+  - Installing symfony/error-handler (v4.4.0): Downloading (100%)
+  - Installing symfony/http-kernel (v4.4.0): Downloading (100%)
+  - Installing nikic/fast-route (v1.3.0): Downloading (100%)
+  - Installing dragonmantank/cron-expression (v2.3.0): Downloading (100%)
+  - Installing monolog/monolog (2.0.1): Downloading (100%)
+  - Installing symfony/translation-contracts (v2.0.0): Downloading (100%)
+  - Installing symfony/translation (v4.4.0): Downloading (100%)
+  - Installing nesbot/carbon (2.27.0): Downloading (100%)
+  - Installing illuminate/contracts (v6.6.0): Downloading (100%)
+  - Installing doctrine/inflector (1.3.1): Downloading (100%)
+  - Installing illuminate/support (v6.6.0): Downloading (100%)
+  - Installing illuminate/log (v6.6.0): Downloading (100%)
+  - Installing symfony/finder (v4.4.0): Downloading (100%)
+  - Installing illuminate/filesystem (v6.6.0): Downloading (100%)
+  - Installing illuminate/container (v6.6.0): Downloading (100%)
+  - Installing illuminate/events (v6.6.0): Downloading (100%)
+  - Installing illuminate/view (v6.6.0): Downloading (100%)
+  - Installing illuminate/translation (v6.6.0): Downloading (100%)
+  - Installing doctrine/lexer (1.2.0): Downloading (100%)
+  - Installing egulias/email-validator (2.1.11): Downloading (100%)
+  - Installing illuminate/validation (v6.6.0): Downloading (100%)
+  - Installing symfony/process (v4.4.0): Downloading (100%)
+  - Installing opis/closure (3.4.1): Downloading (100%)
+  - Installing illuminate/pipeline (v6.6.0): Downloading (100%)
+  - Installing illuminate/database (v6.6.0): Downloading (100%)
+  - Installing symfony/service-contracts (v2.0.0): Downloading (100%)
+  - Installing symfony/console (v4.4.0): Downloading (100%)
+  - Installing illuminate/console (v6.6.0): Downloading (100%)
+  - Installing illuminate/queue (v6.6.0): Downloading (100%)
+  - Installing illuminate/pagination (v6.6.0): Downloading (100%)
+  - Installing illuminate/session (v6.6.0): Downloading (100%)
+  - Installing illuminate/http (v6.6.0): Downloading (100%)
+  - Installing illuminate/hashing (v6.6.0): Downloading (100%)
+  - Installing illuminate/encryption (v6.6.0): Downloading (100%)
+  - Installing illuminate/config (v6.6.0): Downloading (100%)
+  - Installing illuminate/cache (v6.6.0): Downloading (100%)
+  - Installing illuminate/bus (v6.6.0): Downloading (100%)
+  - Installing illuminate/broadcasting (v6.6.0): Downloading (100%)
+  - Installing illuminate/auth (v6.6.0): Downloading (100%)
+  - Installing laravel/lumen-framework (v6.2.0): Downloading (100%)
+  - Installing league/fractal (0.18.0): Downloading (100%)
+  - Installing webmozart/assert (1.6.0): Downloading (100%)
+  - Installing php-http/discovery (1.7.0): Downloading (100%)
+  - Installing symfony/options-resolver (v5.0.0): Downloading (100%)
+  - Installing php-http/promise (v1.0.0): Downloading (100%)
+  - Installing psr/http-client (1.0.0): Downloading (100%)
+  - Installing php-http/httplug (v2.0.0): Downloading (100%)
+  - Installing clue/stream-filter (v1.4.1): Downloading (100%)
+  - Installing php-http/message-factory (v1.0.2): Downloading (100%)
+  - Installing php-http/message (1.8.0): Downloading (100%)
+  - Installing php-http/client-common (2.1.0): Downloading (100%)
+  - Installing psr/http-factory (1.0.1): Downloading (100%)
+  - Installing php-http/multipart-stream-builder (1.1.0): Downloading (100%)
+  - Installing mailgun/mailgun-php (3.0.0): Downloading (100%)
+  - Installing fgrosse/phpasn1 (v2.1.1): Downloading (100%)
+  - Installing mdanter/ecc (v0.5.2): Downloading (100%)
+  - Installing laravel/helpers (v1.1.1): Downloading (100%)
+  - Installing owen-it/laravel-auditing (v9.3.2): Downloading (100%)
+  - Installing violuke/php-barcodes (v1.0.1): Downloading (100%)
+  - Installing paragonie/random_compat (v9.99.99): Downloading (100%)
+  - Installing waavi/sanitizer (1.0.15): Downloading (100%)
+  - Installing illuminate/redis (v6.6.0): Downloading (100%)
+  - Installing http-interop/http-factory-guzzle (1.0.0): Downloading (100%)
+  - Installing php-http/curl-client (dev-master 4336b53): Downloading (100%)
+  - Installing zendframework/zend-diactoros (2.2.1): Downloading (100%)
+  - Installing ramsey/uuid (3.8.0): Downloading (100%)
+  - Installing jean85/pretty-package-versions (1.2): Downloading (100%)
+  - Installing sentry/sentry (2.2.5): Downloading (100%)
+  - Installing sentry/sdk (2.0.4)
+  - Installing sentry/sentry-laravel (1.5.0): Downloading (100%)
+  - Installing fzaninotto/faker (v1.9.0): Downloading (100%)
+  - Installing sebastian/diff (3.0.2): Downloading (100%)
+  - Installing sebastian/recursion-context (3.0.0): Downloading (100%)
+  - Installing sebastian/exporter (3.1.2): Downloading (100%)
+  - Installing sebastian/comparator (3.0.2): Downloading (100%)
+  - Installing hamcrest/hamcrest-php (v2.0.0): Downloading (100%)
+  - Installing mockery/mockery (1.3.0): Downloading (100%)
+  - Installing sebastian/version (2.0.1): Downloading (100%)
+  - Installing sebastian/resource-operations (2.0.1): Downloading (100%)
+  - Installing sebastian/object-reflector (1.1.1): Downloading (100%)
+  - Installing sebastian/object-enumerator (3.0.3): Downloading (100%)
+  - Installing sebastian/global-state (2.0.0): Downloading (100%)
+  - Installing sebastian/environment (4.2.3): Downloading (100%)
+  - Installing phpunit/php-timer (2.1.2): Downloading (100%)
+  - Installing phpunit/php-text-template (1.2.1): Downloading (100%)
+  - Installing phpunit/php-file-iterator (2.0.2): Downloading (100%)
+  - Installing theseer/tokenizer (1.1.3): Downloading (100%)
+  - Installing sebastian/code-unit-reverse-lookup (1.0.1): Downloading (100%)
+  - Installing phpunit/php-token-stream (3.1.1): Downloading (100%)
+  - Installing phpunit/php-code-coverage (6.1.4): Downloading (100%)
+  - Installing doctrine/instantiator (1.3.0): Downloading (100%)
+  - Installing phpdocumentor/reflection-common (2.0.0): Downloading (100%)
+  - Installing phpdocumentor/type-resolver (1.0.1): Downloading (100%)
+  - Installing phpdocumentor/reflection-docblock (4.3.2): Downloading (100%)
+  - Installing phpspec/prophecy (1.9.0): Downloading (100%)
+  - Installing phar-io/version (2.0.1): Downloading (100%)
+  - Installing phar-io/manifest (1.0.3): Downloading (100%)
+  - Installing myclabs/deep-copy (1.9.3): Downloading (100%)
+  - Installing phpunit/phpunit (7.5.17): Downloading (100%)
+  - Installing predis/predis (v1.1.1): Downloading (100%)
+  - Installing facebook/graph-sdk (5.7.0): Downloading (100%)
+  - Installing phpseclib/phpseclib (2.0.23): Downloading (100%)
+  - Installing firebase/php-jwt (v5.0.0): Downloading (100%)
+  - Installing google/apiclient-services (v0.121): Downloading (100%)
+  - Installing google/auth (v1.6.1): Downloading (100%)
+  - Installing google/apiclient (v2.4.0): Downloading (100%)
+  - Installing google/recaptcha (1.2.3): Downloading (100%)
+guzzlehttp/psr7 suggests installing zendframework/zend-httphandlerrunner (Emit PSR-7 responses)
+aws/aws-sdk-php suggests installing doctrine/cache (To use the DoctrineCacheAdapter)
+aws/aws-sdk-php suggests installing aws/aws-php-sns-message-validator (To validate incoming SNS notifications)
+symfony/event-dispatcher-contracts suggests installing psr/event-dispatcher
+symfony/event-dispatcher suggests installing symfony/dependency-injection
+symfony/http-kernel suggests installing symfony/browser-kit
+symfony/http-kernel suggests installing symfony/config
+symfony/http-kernel suggests installing symfony/dependency-injection
+monolog/monolog suggests installing graylog2/gelf-php (Allow sending log messages to a GrayLog2 server)
+monolog/monolog suggests installing doctrine/couchdb (Allow sending log messages to a CouchDB server)
+monolog/monolog suggests installing ruflin/elastica (Allow sending log messages to an Elastic Search server)
+monolog/monolog suggests installing elasticsearch/elasticsearch (Allow sending log messages to an Elasticsearch server via official client)
+monolog/monolog suggests installing php-amqplib/php-amqplib (Allow sending log messages to an AMQP server using php-amqplib)
+monolog/monolog suggests installing ext-amqp (Allow sending log messages to an AMQP server (1.0+ required))
+monolog/monolog suggests installing ext-mongodb (Allow sending log messages to a MongoDB server (via driver))
+monolog/monolog suggests installing mongodb/mongodb (Allow sending log messages to a MongoDB server (via library))
+monolog/monolog suggests installing rollbar/rollbar (Allow sending log messages to Rollbar)
+monolog/monolog suggests installing php-console/php-console (Allow sending log messages to Google Chrome)
+symfony/translation suggests installing symfony/config
+symfony/translation suggests installing symfony/yaml
+illuminate/support suggests installing moontoast/math (Required to use ordered UUIDs (^1.1).)
+illuminate/filesystem suggests installing league/flysystem (Required to use the Flysystem local and FTP drivers (^1.0).)
+illuminate/filesystem suggests installing league/flysystem-aws-s3-v3 (Required to use the Flysystem S3 driver (^1.0).)
+illuminate/filesystem suggests installing league/flysystem-cached-adapter (Required to use the Flysystem cache (^1.0).)
+illuminate/filesystem suggests installing league/flysystem-sftp (Required to use the Flysystem SFTP driver (^1.0).)
+illuminate/database suggests installing doctrine/dbal (Required to rename columns and drop SQLite columns (^2.6).)
+symfony/service-contracts suggests installing symfony/service-implementation
+symfony/console suggests installing symfony/lock
+illuminate/queue suggests installing ext-pcntl (Required to use all features of the queue worker.)
+illuminate/queue suggests installing ext-posix (Required to use all features of the queue worker.)
+illuminate/queue suggests installing pda/pheanstalk (Required to use the Beanstalk queue driver (^4.0).)
+illuminate/cache suggests installing ext-memcached (Required to use the memcache cache driver.)
+illuminate/cache suggests installing symfony/cache (Required to PSR-6 cache bridge (^4.3.4).)
+illuminate/broadcasting suggests installing pusher/pusher-php-server (Required to use the Pusher broadcast driver (^4.0).)
+laravel/lumen-framework suggests installing laravel/tinker (Required to use the tinker console command (^1.0).)
+league/fractal suggests installing pagerfanta/pagerfanta (Pagerfanta Paginator)
+league/fractal suggests installing zendframework/zend-paginator (Zend Framework Paginator)
+php-http/discovery suggests installing puli/composer-plugin (Sets up Puli which is recommended for Discovery to work. Check http://docs.php-http.org/en/latest/discovery.html for more details.)
+php-http/message suggests installing slim/slim (Used with Slim Framework PSR-7 implementation)
+php-http/client-common suggests installing php-http/logger-plugin (PSR-3 Logger plugin)
+php-http/client-common suggests installing php-http/cache-plugin (PSR-6 Cache plugin)
+php-http/client-common suggests installing php-http/stopwatch-plugin (Symfony Stopwatch plugin)
+fgrosse/phpasn1 suggests installing php-curl (For loading OID information from the web if they have not bee defined statically)
+owen-it/laravel-auditing suggests installing laravelista/lumen-vendor-publish (Needed to publish the package configuration in Lumen)
+paragonie/random_compat suggests installing ext-libsodium (Provides a modern crypto API that can be used to generate random bytes.)
+illuminate/redis suggests installing ext-redis (Required to use the phpredis connector.)
+ramsey/uuid suggests installing ircmaxell/random-lib (Provides RandomLib for use with the RandomLibAdapter)
+ramsey/uuid suggests installing ext-libsodium (Provides the PECL libsodium extension for use with the SodiumRandomGenerator)
+ramsey/uuid suggests installing ext-uuid (Provides the PECL UUID extension for use with the PeclUuidTimeGenerator and PeclUuidRandomGenerator)
+ramsey/uuid suggests installing moontoast/math (Provides support for converting UUID to 128-bit integer (in string form).)
+ramsey/uuid suggests installing ramsey/uuid-doctrine (Allows the use of Ramsey\Uuid\Uuid as Doctrine field type.)
+ramsey/uuid suggests installing ramsey/uuid-console (A console application for generating UUIDs with ramsey/uuid)
+sebastian/global-state suggests installing ext-uopz (*)
+sebastian/environment suggests installing ext-posix (*)
+phpunit/php-code-coverage suggests installing ext-xdebug (^2.6.0)
+phpunit/phpunit suggests installing phpunit/php-invoker (^2.0)
+phpunit/phpunit suggests installing ext-xdebug (*)
+predis/predis suggests installing ext-phpiredis (Allows faster serialization and deserialization of the Redis protocol)
+phpseclib/phpseclib suggests installing ext-libsodium (SSH2/SFTP can make use of some algorithms provided by the libsodium-php extension.)
+phpseclib/phpseclib suggests installing ext-mcrypt (Install the Mcrypt extension in order to speed up a few other cryptographic operations.)
+google/apiclient suggests installing cache/filesystem-adapter (For caching certs and tokens (using Google_Client::setCache))
+Writing lock file
+Generating optimized autoload files
+ocramius/package-versions: Generating version class...
+ocramius/package-versions: ...done generating version class
+PS C:\Users\Cameron\Local\wamp64\www\Consulting_EduRAIN_App-API> composer show -l
+algolia/algoliasearch-client-php   2.5.0              2.5.0              Algolia Search API Client for PHP
+aws/aws-sdk-php                    3.123.0            3.123.0            AWS SDK for PHP - Use Amazon Web Services in your PHP project
+clue/stream-filter                 v1.4.1             v1.4.1             A simple and modern approach to stream filtering in PHP
+doctrine/inflector                 1.3.1              1.3.1              Common String Manipulations with regard to casing and singular/plural rules.
+doctrine/instantiator              1.3.0              1.3.0              A small, lightweight utility to instantiate objects in PHP without invoking their constructors
+doctrine/lexer                     1.2.0              1.2.0              PHP Doctrine Lexer parser library that can be used in Top-Down, Recursive Descent Parsers.
+dragonmantank/cron-expression      v2.3.0             v2.3.0             CRON for PHP: Calculate the next or previous run date and determine if a CRON expression is due
+egulias/email-validator            2.1.11             2.1.11             A library for validating emails against several RFCs
+facebook/graph-sdk                 5.7.0              5.7.0              Facebook SDK for PHP
+fgrosse/phpasn1                    v2.1.1             v2.1.1             A PHP Framework that allows you to encode and decode arbitrary ASN.1 structures using the ITU-T X.690 Encoding Rules.
+firebase/php-jwt                   v5.0.0             v5.0.0             A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.
+fzaninotto/faker                   v1.9.0             v1.9.0             Faker is a PHP library that generates fake data for you.
+google/apiclient                   v2.4.0             v2.4.0             Client library for Google APIs
+google/apiclient-services          v0.121             v0.121             Client library for Google APIs
+google/auth                        v1.6.1             v1.6.1             Google Auth Library for PHP
+google/recaptcha                   1.2.3              1.2.3              Client library for reCAPTCHA, a free service that protects websites from spam and abuse.
+guzzlehttp/guzzle                  6.4.1              6.4.1              Guzzle is a PHP HTTP client library
+guzzlehttp/promises                v1.3.1             v1.3.1             Guzzle promises library
+guzzlehttp/psr7                    1.6.1              1.6.1              PSR-7 message implementation that also provides common utility methods
+hamcrest/hamcrest-php              v2.0.0             v2.0.0             This is the PHP port of Hamcrest Matchers
+hashids/hashids                    4.0.0              4.0.0              Generate short, unique, non-sequential ids (like YouTube and Bitly) from numbers
+http-interop/http-factory-guzzle   1.0.0              1.0.0              An HTTP Factory using Guzzle PSR7
+illuminate/auth                    v6.6.0             v6.6.0             The Illuminate Auth package.
+illuminate/broadcasting            v6.6.0             v6.6.0             The Illuminate Broadcasting package.
+illuminate/bus                     v6.6.0             v6.6.0             The Illuminate Bus package.
+illuminate/cache                   v6.6.0             v6.6.0             The Illuminate Cache package.
+illuminate/config                  v6.6.0             v6.6.0             The Illuminate Config package.
+illuminate/console                 v6.6.0             v6.6.0             The Illuminate Console package.
+illuminate/container               v6.6.0             v6.6.0             The Illuminate Container package.
+illuminate/contracts               v6.6.0             v6.6.0             The Illuminate Contracts package.
+illuminate/database                v6.6.0             v6.6.0             The Illuminate Database package.
+illuminate/encryption              v6.6.0             v6.6.0             The Illuminate Encryption package.
+illuminate/events                  v6.6.0             v6.6.0             The Illuminate Events package.
+illuminate/filesystem              v6.6.0             v6.6.0             The Illuminate Filesystem package.
+illuminate/hashing                 v6.6.0             v6.6.0             The Illuminate Hashing package.
+illuminate/http                    v6.6.0             v6.6.0             The Illuminate Http package.
+illuminate/log                     v6.6.0             v6.6.0             The Illuminate Log package.
+illuminate/pagination              v6.6.0             v6.6.0             The Illuminate Pagination package.
+illuminate/pipeline                v6.6.0             v6.6.0             The Illuminate Pipeline package.
+illuminate/queue                   v6.6.0             v6.6.0             The Illuminate Queue package.
+illuminate/redis                   v6.6.0             v6.6.0             The Illuminate Redis package.
+illuminate/session                 v6.6.0             v6.6.0             The Illuminate Session package.
+illuminate/support                 v6.6.0             v6.6.0             The Illuminate Support package.
+illuminate/translation             v6.6.0             v6.6.0             The Illuminate Translation package.
+illuminate/validation              v6.6.0             v6.6.0             The Illuminate Validation package.
+illuminate/view                    v6.6.0             v6.6.0             The Illuminate View package.
+jean85/pretty-package-versions     1.2                1.2                A wrapper for ocramius/package-versions to get pretty versions strings
+laravel/helpers                    v1.1.1             v1.1.1             Provides backwards compatibility for helpers in the latest Laravel release.
+laravel/lumen-framework            v6.2.0             v6.2.0             The Laravel Lumen Framework.
+league/fractal                     0.18.0             0.18.0             Handle the output of complex data structures ready for API output.
+mailgun/mailgun-php                3.0.0              3.0.0              The Mailgun SDK provides methods for all API functions.
+mdanter/ecc                        v0.5.2             v0.5.2             PHP Elliptic Curve Cryptography library
+mockery/mockery                    1.3.0              1.3.0              Mockery is a simple yet flexible PHP mock object framework
+monolog/monolog                    2.0.1              2.0.1              Sends your logs to files, sockets, inboxes, databases and various web services
+mtdowling/jmespath.php             2.4.0              2.4.0              Declaratively specify how to extract elements from a JSON document
+myclabs/deep-copy                  1.9.3              1.9.3              Create deep copies (clones) of your objects
+nesbot/carbon                      2.27.0             2.27.0             An API extension for DateTime that supports 281 different languages.
+nikic/fast-route                   v1.3.0             v1.3.0             Fast request router for PHP
+ocramius/package-versions          1.5.1              1.5.1              Composer plugin that provides efficient querying for installed package versions (no runtime IO)
+opis/closure                       3.4.1              3.4.2              A library that can be used to serialize closures (anonymous functions) and arbitrary objects.
+owen-it/laravel-auditing           v9.3.2             v9.3.2             Audit changes of your Eloquent models in Laravel/Lumen
+paragonie/random_compat            v9.99.99           v9.99.99           PHP 5.x polyfill for random_bytes() and random_int() from PHP 7
+phar-io/manifest                   1.0.3              1.0.3              Component for reading phar.io manifest information from a PHP Archive (PHAR)
+phar-io/version                    2.0.1              2.0.1              Library for handling version information and constraints
+php-http/client-common             2.1.0              2.1.0              Common HTTP Client implementations and tools for HTTPlug
+php-http/curl-client               dev-master 4336b53 dev-master 4336b53 PSR-18 and HTTPlug Async client with cURL
+php-http/discovery                 1.7.0              1.7.0              Finds installed HTTPlug implementations and PSR-7 message factories
+php-http/httplug                   v2.0.0             v2.0.0             HTTPlug, the HTTP client abstraction for PHP
+php-http/message                   1.8.0              1.8.0              HTTP Message related tools
+php-http/message-factory           v1.0.2             v1.0.2             Factory interfaces for PSR-7 HTTP Message
+php-http/multipart-stream-builder  1.1.0              1.1.0              A builder class that help you create a multipart stream
+php-http/promise                   v1.0.0             v1.0.0             Promise used for asynchronous HTTP requests
+phpdocumentor/reflection-common    2.0.0              2.0.0              Common reflection classes used by phpdocumentor to reflect the code structure
+phpdocumentor/reflection-docblock  4.3.2              4.3.2              With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.
+phpdocumentor/type-resolver        1.0.1              1.0.1              A PSR-5 based resolver of Class names, Types and Structural Element Names
+phpoption/phpoption                1.5.2              1.5.2              Option Type for PHP
+phpseclib/phpseclib                2.0.23             2.0.23             PHP Secure Communications Library - Pure-PHP implementations of RSA, AES, SSH2, SFTP, X.509 etc.
+phpspec/prophecy                   1.9.0              1.9.0              Highly opinionated mocking framework for PHP 5.3+
+phpunit/php-code-coverage          6.1.4              7.0.10             Library that provides collection, processing, and rendering functionality for PHP code coverage information.
+phpunit/php-file-iterator          2.0.2              2.0.2              FilterIterator implementation that filters files based on a list of suffixes.
+phpunit/php-text-template          1.2.1              1.2.1              Simple template engine.
+phpunit/php-timer                  2.1.2              2.1.2              Utility class for timing
+phpunit/php-token-stream           3.1.1              3.1.1              Wrapper around PHP's tokenizer extension.
+phpunit/phpunit                    7.5.17             8.4.3              The PHP Unit Testing framework.
+predis/predis                      v1.1.1             v1.1.1             Flexible and feature-complete Redis client for PHP and HHVM
+psr/cache                          1.0.1              1.0.1              Common interface for caching libraries
+psr/container                      1.0.0              1.0.0              Common Container Interface (PHP FIG PSR-11)
+psr/http-client                    1.0.0              1.0.0              Common interface for HTTP clients
+psr/http-factory                   1.0.1              1.0.1              Common interfaces for PSR-7 HTTP message factories
+psr/http-message                   1.0.1              1.0.1              Common interface for HTTP messages
+psr/log                            1.1.2              1.1.2              Common interface for logging libraries
+psr/simple-cache                   1.0.1              1.0.1              Common interfaces for simple caching
+ralouphie/getallheaders            3.0.3              3.0.3              A polyfill for getallheaders.
+ramsey/uuid                        3.8.0              3.8.0              Formerly rhumsaa/uuid. A PHP 5.4+ library for generating RFC 4122 version 1, 3, 4, and 5 universally unique identifiers (UUID).
+sebastian/code-unit-reverse-lookup 1.0.1              1.0.1              Looks up which function or method a line of code belongs to
+sebastian/comparator               3.0.2              3.0.2              Provides the functionality to compare PHP values for equality
+sebastian/diff                     3.0.2              3.0.2              Diff implementation
+sebastian/environment              4.2.3              4.2.3              Provides functionality to handle HHVM/PHP environments
+sebastian/exporter                 3.1.2              3.1.2              Provides the functionality to export PHP variables for visualization
+sebastian/global-state             2.0.0              3.0.0              Snapshotting of global state
+sebastian/object-enumerator        3.0.3              3.0.3              Traverses array structures and object graphs to enumerate all referenced objects
+sebastian/object-reflector         1.1.1              1.1.1              Allows reflection of object attributes, including inherited and non-public ones
+sebastian/recursion-context        3.0.0              3.0.0              Provides functionality to recursively process PHP variables
+sebastian/resource-operations      2.0.1              2.0.1              Provides a list of PHP built-in functions that operate on resources
+sebastian/version                  2.0.1              2.0.1              Library that helps with managing the version number of Git-hosted PHP projects
+sentry/sdk                         2.0.4              2.0.4              This is a metapackage shipping sentry/sentry with a recommended http client.
+sentry/sentry                      2.2.5              2.2.5              A PHP SDK for Sentry (http://sentry.io)
+sentry/sentry-laravel              1.5.0              1.5.0              Laravel SDK for Sentry (https://sentry.io)
+symfony/console                    v4.4.0             v5.0.0             Symfony Console Component
+symfony/debug                      v4.4.0             v4.4.0             Symfony Debug Component
+symfony/error-handler              v4.4.0             v5.0.0             Symfony ErrorHandler Component
+symfony/event-dispatcher           v4.4.0             v5.0.0             Symfony EventDispatcher Component
+symfony/event-dispatcher-contracts v1.1.7             v2.0.0             Generic abstractions related to dispatching event
+symfony/finder                     v4.4.0             v5.0.0             Symfony Finder Component
+symfony/http-foundation            v4.4.0             v5.0.0             Symfony HttpFoundation Component
+symfony/http-kernel                v4.4.0             v5.0.0             Symfony HttpKernel Component
+symfony/mime                       v5.0.0             v5.0.0             A library to manipulate MIME messages
+symfony/options-resolver           v5.0.0             v5.0.0             Symfony OptionsResolver Component
+symfony/polyfill-ctype             v1.13.0            v1.13.0            Symfony polyfill for ctype functions
+symfony/polyfill-intl-idn          v1.13.0            v1.13.0            Symfony polyfill for intl's idn_to_ascii and idn_to_utf8 functions
+symfony/polyfill-mbstring          v1.13.0            v1.13.0            Symfony polyfill for the Mbstring extension
+symfony/polyfill-php72             v1.13.0            v1.13.0            Symfony polyfill backporting some PHP 7.2+ features to lower PHP versions
+symfony/polyfill-php73             v1.13.0            v1.13.0            Symfony polyfill backporting some PHP 7.3+ features to lower PHP versions
+symfony/process                    v4.4.0             v5.0.0             Symfony Process Component
+symfony/service-contracts          v2.0.0             v2.0.0             Generic abstractions related to writing services
+symfony/translation                v4.4.0             v5.0.0             Symfony Translation Component
+symfony/translation-contracts      v2.0.0             v2.0.0             Generic abstractions related to translation
+symfony/var-dumper                 v4.4.0             v5.0.0             Symfony mechanism for exploring and dumping PHP variables
+theseer/tokenizer                  1.1.3              1.1.3              A small library for converting tokenized PHP source code into XML and potentially other formats
+violuke/php-barcodes               v1.0.1             v1.0.1             A collection of PHP classes for managing barcodes.
+vlucas/phpdotenv                   v3.6.0             v3.6.0             Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.
+waavi/sanitizer                    1.0.15             1.0.15             Data sanitizer and Laravel 5 form requests with input sanitation.
+webmozart/assert                   1.6.0              1.6.0              Assertions to validate method input/output with nice error messages.
+zendframework/zend-diactoros       2.2.1              2.2.1              PSR HTTP Message implementations
+PS C:\Users\Cameron\Local\wamp64\www\Consulting_EduRAIN_App-API>

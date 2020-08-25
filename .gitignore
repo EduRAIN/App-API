@@ -1,0 +1,6 @@
+**/.DS_Store
+/public/.htaccess
+/storage/logs
+/vendor
+.env
+.htaccess
