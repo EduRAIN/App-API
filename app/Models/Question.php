@@ -8,12 +8,12 @@ use Hashids\Hashids;
 
 use OwenIt\Auditing\Contracts\Auditable;
 
-class FafsaQuestion extends Model implements Auditable
+class Question extends Model implements Auditable
 {
     use SoftDeletes;
     use \OwenIt\Auditing\Auditable;
 
-    protected $table = 'FAFSA_Question';
+    protected $table = 'Question';
     protected $connection = 'sql-app';
 
     protected $guarded = ['id'];
@@ -35,14 +35,14 @@ class FafsaQuestion extends Model implements Auditable
 
     public static function hash()
     {
-        return (new Hashids(FafsaQuestion::SALT, 8));
+        return (new Hashids(Question::SALT, 8));
     }
 
     // =========================================================================
 
     public function answers()
     {
-        return $this->hasMany(FafsaAnswer::class)
+        return $this->hasMany(Answer::class)
                     ->whereNull('EduRAIN.Answer.deleted_at');
     }
 
@@ -50,17 +50,10 @@ class FafsaQuestion extends Model implements Auditable
 
     public function responses()
     {
-        return $this->belongsToMany(Fafsa::class, 'EduRAIN.FAFSA_Response')
-                    ->whereNull('EduRAIN.FAFSA_Response.deleted_at')
+        return $this->belongsToMany(Response::class, 'EduRAIN.Response')
+                    ->whereNull('EduRAIN.Response.deleted_at')
                     ->withTimestamps('created_at', 'updated_at', 'deleted_at')
-                    ->withPivot(['fafsa_answer_id', 'data_numeric', 'data_text']);
-    }
-
-    // -------------------------------------------------------------------------
-
-    public function page()
-    {
-        return $this->belongsTo(FafsaPage::class, 'page_id');
+                    ->withPivot(['answer_id', 'data_numeric', 'data_text']);
     }
 
     // =========================================================================
@@ -72,7 +65,7 @@ class FafsaQuestion extends Model implements Auditable
      */
     public static function fields()
     {
-        return array_keys(FafsaQuestion::validations());
+        return array_keys(Question::validations());
     }
 
     // -------------------------------------------------------------------------

@@ -17,7 +17,7 @@ class CriteriaOption extends Model implements Auditable
     protected $connection = 'sql-app';
 
     protected $guarded = ['id'];
-    protected $hidden = ['id', 'Criteria_id',
+    protected $hidden = ['id', 'criteria_id',
                          'created_at', 'updated_at', 'deleted_at'];
 
     const SALT = '499300a4845e';
@@ -85,7 +85,7 @@ class CriteriaOption extends Model implements Auditable
     {
         $v = [
             'name'                              =>  'required|string|max:255',
-            'Criteria'                       =>  'nullable|string'
+            'criteria'                          =>  'nullable|string'
         ];
 
         return $v;

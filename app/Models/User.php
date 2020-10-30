@@ -54,6 +54,14 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
     // -------------------------------------------------------------------------
 
+    public function responses()
+    {
+        return $this->belongsToMany(Question::class, 'EduRAIN.Response')
+                    ->whereNull('EduRAIN.Response.deleted_at')
+                    ->withTimestamps('created_at', 'updated_at', 'deleted_at')
+                    ->withPivot(['answer_id', 'data_numeric', 'data_text']);
+    }
+
     // =========================================================================
 
     /**

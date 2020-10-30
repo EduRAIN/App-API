@@ -8,12 +8,12 @@ use Hashids\Hashids;
 
 use OwenIt\Auditing\Contracts\Auditable;
 
-class FafsaAnswer extends Model implements Auditable
+class Answer extends Model implements Auditable
 {
     use SoftDeletes;
     use \OwenIt\Auditing\Auditable;
 
-    protected $table = 'FAFSA_Answer';
+    protected $table = 'Answer';
     protected $connection = 'sql-app';
 
     protected $guarded = ['id'];
@@ -35,14 +35,14 @@ class FafsaAnswer extends Model implements Auditable
 
     public static function hash()
     {
-        return (new Hashids(FafsaAnswer::SALT, 8));
+        return (new Hashids(Answer::SALT, 8));
     }
 
     // =========================================================================
 
     public function answers()
     {
-        return $this->hasMany(FafsaAnswer::class)
+        return $this->hasMany(Answer::class)
                     ->whereNull('EduRAIN.Answer.deleted_at');
     }
 
@@ -50,7 +50,7 @@ class FafsaAnswer extends Model implements Auditable
 
     public function question()
     {
-        return $this->belongsTo(FafsaQuestion::class, 'question_id');
+        return $this->belongsTo(Question::class, 'question_id');
     }
 
     // =========================================================================
@@ -62,7 +62,7 @@ class FafsaAnswer extends Model implements Auditable
      */
     public static function fields()
     {
-        return array_keys(FafsaAnswer::validations());
+        return array_keys(Answer::validations());
     }
 
     // -------------------------------------------------------------------------

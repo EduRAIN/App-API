@@ -40,20 +40,12 @@ class Fafsa extends Model implements Auditable
 
     // =========================================================================
 
-    public function forms()
-    {
-        return $this->hasMany(FafsaForm::class)
-                    ->whereNull('EduRAIN.Fafsa_Form.deleted_at');
-    }
-
-    // -------------------------------------------------------------------------
-
     public function responses()
     {
-        return $this->belongsToMany(FafsaQuestion::class, 'EduRAIN.FAFSA_Response')
-                    ->whereNull('EduRAIN.FAFSA_Response.deleted_at')
+        return $this->belongsToMany(Question::class, 'EduRAIN.Response')
+                    ->whereNull('EduRAIN.Response.deleted_at')
                     ->withTimestamps('created_at', 'updated_at', 'deleted_at')
-                    ->withPivot(['fafsa_answer_id', 'data_numeric', 'data_text']);
+                    ->withPivot(['answer_id', 'data_numeric', 'data_text']);
     }
 
     // =========================================================================

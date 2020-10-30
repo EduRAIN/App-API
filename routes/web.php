@@ -25,6 +25,10 @@ $router->group(['prefix' => $_ENV['APP_PREFIX']], function () use ($router){
     $router->delete('scholarship/{id}',           'ScholarshipController@remove');
 
     // FAFSA Questionnaire
-    $router->get('fafsa/{id}',                    'FafsaController@fetch');
-    $router->post('fafsa/{id}',                   'FafsaResponseController@update');
+    $router->get('fafsa/{id}',                    'QuestionController@fetch');
+    $router->post('fafsa/{id}',                   'ResponseController@update');
+
+    // Demographics Profile
+    $router->get('demographics[/{id}]',            'QuestionController@fetch');
+    $router->post('demographics[/{id}]',           'ResponseController@update');
 });

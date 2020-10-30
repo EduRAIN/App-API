@@ -3,16 +3,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Auth;
 use DB;
 
 use App\Helpers\Obfuscate;
 
 use App\Models\Fafsa;
-use App\Models\FafsaAnswer;
-use App\Models\FafsaQuestion;
-use App\Models\FafsaResponse;
+use App\Models\Answer;
+use App\Models\Question;
+use App\Models\Response;
 
-class FafsaResponseController extends Controller
+class ResponseController extends Controller
 {
     public function __construct()
     {
@@ -21,9 +22,14 @@ class FafsaResponseController extends Controller
 
     // -------------------------------------------------------------------------
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $id = null)
     {
-        $fafsa = Fafsa::findOrFail(Fafsa::hash()->decode($id));
+        $demographics = (stripos($request->fullUrl(), '/fafsa') === false);
+
+        if (!$demographics)
+        {
+            $fafsa = Fafsa::findOrFail(Fafsa::hash()->decode($id));
+        }
 
         $sync = [];
         $safe = [];
@@ -31,7 +37,7 @@ class FafsaResponseController extends Controller
         // Iterate Responses with Questions as Key
         foreach ($request->input('responses') as $question => $responses)
         {
-            $question = FafsaQuestion::where('name', 'LIKE', $question)->firstOrFail();
+            $question = Question::where('name', 'LIKE', $question)->firstOrFail();
 
             // Convert Single Responses to Array for Iteration
             if (!is_array($responses))
@@ -55,7 +61,7 @@ class FafsaResponseController extends Controller
                 if ($type == 'boolean')
                 {
                     $sync[$question->id] = [
-                        'fafsa_answer_id'   =>  null,
+                        'answer_id'         =>  null,
                         'data_boolean'      =>  $response,
                         'data_numeric'      =>  null,
                         'data_text'         =>  null,
@@ -66,7 +72,7 @@ class FafsaResponseController extends Controller
                 else if ($type == 'date')
                 {
                     $sync[$question->id] = [
-                        'fafsa_answer_id'   =>  null,
+                        'answer_id'         =>  null,
                         'data_boolean'      =>  null,
                         'data_numeric'      =>  null,
                         'data_text'         =>  null,
@@ -76,25 +82,47 @@ class FafsaResponseController extends Controller
 
                 else if ($type == 'select' || $type == 'multi')
                 {
-                    $answer = FafsaAnswer::where('fafsa_question_id', '=', $question->id)
-                                         ->where('name', 'LIKE', $response)
-                                         ->first();
+                    $answer = Answer::where('question_id', '=', $question->id)
+                                    ->where('name', 'LIKE', $response)
+                                    ->first();
 
                     // Check for Answer Already Attached
-                    if (FafsaResponse::where('fafsa_id', '=', $fafsa->id)
-                                     ->where('fafsa_answer_id', '=', $answer->id)
-                                     ->whereNull('deleted_at')
-                                     ->count() == 0)
+                    if ($demographics)
                     {
-                        // Attach New Responses
-                        $fafsa->responses()->attach([$question->id => [
-                            'fafsa_answer_id'   =>  $answer->id,
-                            'data_boolean'      =>  null,
-                            'data_numeric'      =>  null,
-                            'data_text'         =>  null,
-                            'data_date'         =>  null
-                        ]]);
+                        if (Response::where('user_id', '=', Auth::id())
+                                    ->where('answer_id', '=', $answer->id)
+                                    ->whereNull('deleted_at')
+                                    ->count() == 0)
+                        {
+                            // Attach New Responses
+                            Auth::user()->responses()->attach([$question->id => [
+                                'answer_id'         =>  $answer->id,
+                                'data_boolean'      =>  null,
+                                'data_numeric'      =>  null,
+                                'data_text'         =>  null,
+                                'data_date'         =>  null
+                            ]]);
+                        }
                     }
+
+                    else
+                    {
+                        if (Response::where('fafsa_id', '=', $fafsa->id)
+                                    ->where('answer_id', '=', $answer->id)
+                                    ->whereNull('deleted_at')
+                                    ->count() == 0)
+                        {
+                            // Attach New Responses
+                            $fafsa->responses()->attach([$question->id => [
+                                'answer_id'         =>  $answer->id,
+                                'data_boolean'      =>  null,
+                                'data_numeric'      =>  null,
+                                'data_text'         =>  null,
+                                'data_date'         =>  null
+                            ]]);
+                        }
+                    }
+
 
                     // Check that Question Exists in Cache
                     if (!isset($safe[$question->id]))
@@ -109,22 +137,22 @@ class FafsaResponseController extends Controller
                 else if ($type == 'text')
                 {
                     $sync[$question->id] = [
-                        'fafsa_answer_id'   =>  null,
-                        'data_boolean'      =>  null,
-                        'data_numeric'      =>  null,
-                        'data_text'         =>  $response,
-                        'data_date'         =>  null
+                        'answer_id'       =>  null,
+                        'data_boolean'    =>  null,
+                        'data_numeric'    =>  null,
+                        'data_text'       =>  $response,
+                        'data_date'       =>  null
                     ];
                 }
 
                 else if ($type == 'numeric')
                 {
                     $sync[$question->id] = [
-                        'fafsa_answer_id'   =>  null,
-                        'data_boolean'      =>  null,
-                        'data_numeric'      =>  $response,
-                        'data_text'         =>  null,
-                        'data_date'         =>  null
+                        'answer_id'       =>  null,
+                        'data_boolean'    =>  null,
+                        'data_numeric'    =>  $response,
+                        'data_text'       =>  null,
+                        'data_date'       =>  null
                     ];
                 }
             }
@@ -141,13 +169,13 @@ class FafsaResponseController extends Controller
         {
             foreach ($safe as $question => $values)
             {
-                FafsaResponse::query()
-                             ->where('fafsa_question_id', '=', $question)
-                             ->whereNotIn('fafsa_answer_id', $values)
-                             ->whereNull('deleted_at')
-                             ->update([
-                                 'deleted_at' => date('c')
-                               ]);
+                Response::query()
+                        ->where('question_id', '=', $question)
+                        ->whereNotIn('answer_id', $values)
+                        ->whereNull('deleted_at')
+                        ->update([
+                           'deleted_at' => date('c')
+                          ]);
             }
         }
 
