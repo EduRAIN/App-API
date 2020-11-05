@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -48,22 +49,18 @@ class Audit extends Model
         $old = [];
         $new = [];
 
-        foreach ($attributes as $k => $v)
-        {
-            if ($model[$k] != $v)
-            {
+        foreach ($attributes as $k => $v) {
+            if ($model[$k] != $v) {
                 $old[$k] = $model[$k];
                 $new[$k] = $v;
             }
         }
 
-        if (isset($old['telemetry']))
-        {
+        if (isset($old['telemetry'])) {
             unset($old['telemetry']);
         }
 
-        if (count($new) > 1 || (count($new) == 1 && array_keys($new)[0] != 'telemetry'))
-        {
+        if (count($new) > 1 || (count($new) == 1 && array_keys($new)[0] != 'telemetry')) {
             DB::connection('sql-app')->table('Curate_Wine.Audit')->insert([
                 'user_id'         =>  Auth::id(),
                 'event'           =>  2,
