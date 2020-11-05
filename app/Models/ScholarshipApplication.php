@@ -19,8 +19,7 @@ class ScholarshipApplication extends Model implements Auditable
 
     protected $guarded = ['id'];
     protected $hidden = [
-        'id', 'user_id', 'scholarship_id',
-        'created_at', 'updated_at', 'deleted_at'
+        'id', 'created_at', 'updated_at', 'deleted_at'
     ];
 
     const SALT = '3c0dd2035b66';
