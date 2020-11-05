@@ -17,11 +17,7 @@ class ScholarshipController extends Controller
 {
     public function __construct()
     {
-        // echo ScholarshipApplication::hash()->encode(2);
-        // die;
         // $this->middleware('auth');
-        //VNg9Eg0O
-        //MRawXPg1
     }
 
     // -------------------------------------------------------------------------
