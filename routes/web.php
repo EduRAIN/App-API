@@ -24,8 +24,8 @@ $router->group(['prefix' => $_ENV['APP_PREFIX']], function () use ($router) {
     $router->post('scholarship/{id}', 'ScholarshipController@update');
     $router->delete('scholarship/{id}', 'ScholarshipController@remove');
 
-    // Scholarship Application
-    $router->post('favourite_scholarship', 'ScholarshipController@find_favourite_scholarship');
+    // Favorite Scholarship
+    $router->post('set-scholarship-as-favorite', 'ScholarshipController@setScholarshipAsFavorite');
 
     // FAFSA Questionnaire
     $router->get('fafsa/{id}', 'QuestionController@fetch');

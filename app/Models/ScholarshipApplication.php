@@ -14,7 +14,7 @@ class ScholarshipApplication extends Model implements Auditable
     use SoftDeletes;
     use \OwenIt\Auditing\Auditable;
 
-    protected $table = 'Scholarship_Application';
+    protected $table = 'scholarship_application';
     protected $connection = 'sql-app';
 
     protected $guarded = ['id'];

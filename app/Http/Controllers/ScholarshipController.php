@@ -73,33 +73,30 @@ class ScholarshipController extends Controller
         return response()->json($scholarship, 200, [], JSON_NUMERIC_CHECK);
     }
 
-    public function find_favourite_scholarship(Request $request)
+    public function setScholarshipAsFavorite(Request $request)
     {
-        $user_id = ScholarshipApplication::hash()->decode($request->user_id);
-        $scholarship_id = ScholarshipApplication::hash()->decode($request->scholarship_id);
+        $userId = ScholarshipApplication::hash()->decode($request->userId);
+        $scholarshipId = ScholarshipApplication::hash()->decode($request->scholarshipId);
+
         $criteria = DB::connection('sql-app')
-            ->table('Scholarship_Application')
-            ->where('user_id', '=', $user_id)
-            ->where('scholarship_id', '=', $scholarship_id)
-            ->whereNull('Scholarship_Application.deleted_at')
-            ->whereNull('Scholarship_Application.deleted_at')
-            ->whereNull('Scholarship_Application.deleted_at')
-            ->get()
+            ->table('scholarship_application')
+            ->where('user_id', '=', $userId)
+            ->where('scholarship_id', '=', $scholarshipId)
             ->first();
 
         if (!empty($criteria)) {
-            $favouriteUser = ScholarshipApplication::findOrFail($criteria->id);
-            $favouriteUser->is_favorite = 1;
-            $favouriteUser->save();
+            $favoriteUser = ScholarshipApplication::findOrFail($criteria->id);
+            $favoriteUser->is_favorite = 1;
+            $favoriteUser->save();
 
-            $favouriteScholarshipStatus['id'] = $criteria->id;
-            $favouriteScholarshipStatus['status'] = 1;
-            $favouriteScholarshipStatus['msg'] = "Successfully scholarship add to user favorite list";
+            $favoriteScholarshipStatus['id'] = $criteria->id;
+            $favoriteScholarshipStatus['status'] = 1;
+            $favoriteScholarshipStatus['msg'] = "Successfully scholarship add to user favorite list";
         } else {
-            $favouriteScholarshipStatus['status'] = 0;
-            $favouriteScholarshipStatus['msg'] = "Not found";
+            $favoriteScholarshipStatus['status'] = 0;
+            $favoriteScholarshipStatus['msg'] = "Not found";
         }
 
-        return response()->json($favouriteScholarshipStatus, 200, [], JSON_NUMERIC_CHECK);
+        return response()->json($favoriteScholarshipStatus, 200, [], JSON_NUMERIC_CHECK);
     }
 }
