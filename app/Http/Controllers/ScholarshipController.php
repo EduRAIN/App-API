@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use DB;
-
 use App\Helpers\Obfuscate;
-
 use App\Models\Criteria;
 use App\Models\CriteriaOption;
 use App\Models\Scholarship;
@@ -75,28 +72,26 @@ class ScholarshipController extends Controller
 
     public function setScholarshipAsFavorite(Request $request)
     {
-        $userId = ScholarshipApplication::hash()->decode($request->userId);
-        $scholarshipId = ScholarshipApplication::hash()->decode($request->scholarshipId);
+        try {
+            $userId = ScholarshipApplication::hash()->decode($request->userId);
+            $scholarshipId = ScholarshipApplication::hash()->decode($request->scholarshipId);
 
-        $criteria = DB::connection('sql-app')
-            ->table('scholarship_application')
-            ->where('user_id', '=', $userId)
-            ->where('scholarship_id', '=', $scholarshipId)
-            ->first();
+            $criteria = DB::connection('sql-app')
+                ->table('scholarship_application')
+                ->where('user_id', $userId)
+                ->where('scholarship_id', $scholarshipId)
+                ->first();
 
-        if (!empty($criteria)) {
-            $favoriteUser = ScholarshipApplication::findOrFail($criteria->id);
-            $favoriteUser->is_favorite = 1;
-            $favoriteUser->save();
-
-            $favoriteScholarshipStatus['id'] = $criteria->id;
-            $favoriteScholarshipStatus['status'] = 1;
-            $favoriteScholarshipStatus['msg'] = "Successfully scholarship add to user favorite list";
-        } else {
-            $favoriteScholarshipStatus['status'] = 0;
-            $favoriteScholarshipStatus['msg'] = "Not found";
+            if (!empty($criteria)) {
+                $scholarship = ScholarshipApplication::findOrFail($criteria->id);
+                $scholarship->is_favorite = 1;
+                $scholarship->save();
+                return response()->json([], 201, [], JSON_NUMERIC_CHECK);
+            } else {
+                return response()->json([], 422, [], JSON_NUMERIC_CHECK);
+            }
+        } catch (\Throwable $e) {
+            return response()->json([], 401, [], JSON_NUMERIC_CHECK);
         }
-
-        return response()->json($favoriteScholarshipStatus, 200, [], JSON_NUMERIC_CHECK);
     }
 }
