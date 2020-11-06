@@ -12,6 +12,9 @@ use App\Models\Criteria;
 use App\Models\CriteriaOption;
 use App\Models\Scholarship;
 
+const ZERO_INDEX = 0;
+const FIRST_INDEX = 1;
+
 class ScholarshipController extends Controller
 {
     public function __construct()
@@ -73,16 +76,23 @@ class ScholarshipController extends Controller
         return response()->json($scholarship, 200, [], JSON_NUMERIC_CHECK);
     }
 
-    public function scholarshipReport($id)
+    public function scholarshipAsReported($id)
     {
         $scholarshipId = Scholarship::hash()->decode($id);
+        $scholarshipReport = Scholarship::find($scholarshipId[ZERO_INDEX]);
 
-        $scholarReport = Scholarship::findOrFail($scholarshipId)->first();
-        $scholarReport->reported =  $scholarReport->reported + 1;
-        $scholarReport->save();
+        if ($scholarshipReport) {
+            $counter = $scholarshipReport->reported + FIRST_INDEX;
+            Scholarship::where('id', '=', $scholarshipReport->id)
+                ->update([
+                    'reported' => $counter
+                ]);
 
-        $scholarshipReportStatus['id'] = $id;
-        $scholarshipReportStatus['report_counter'] = $scholarReport->reported;
+            $scholarshipReportStatus['reported'] = $counter;
+            $scholarshipReportStatus['status'] = TRUE;
+        } else {
+            $scholarshipReportStatus['status'] = FALSE;
+        }
         return response()->json($scholarshipReportStatus, 200, [], JSON_NUMERIC_CHECK);
     }
 }

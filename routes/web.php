@@ -23,7 +23,7 @@ $router->group(['prefix' => $_ENV['APP_PREFIX']], function () use ($router) {
     $router->post('scholarship/new', 'ScholarshipController@update');
     $router->post('scholarship/{id}', 'ScholarshipController@update');
     $router->delete('scholarship/{id}', 'ScholarshipController@remove');
-    $router->get('scholarship/report/{id}', 'ScholarshipController@scholarshipReport');
+    $router->get('scholarship-as-reported/{id}', 'ScholarshipController@scholarshipAsReported');
 
     // FAFSA Questionnaire
     $router->get('fafsa/{id}', 'QuestionController@fetch');
