@@ -76,23 +76,25 @@ class ScholarshipController extends Controller
         return response()->json($scholarship, 200, [], JSON_NUMERIC_CHECK);
     }
 
-    public function scholarshipAsReported($id)
+    public function scholarshipReported($scholarshipId)
     {
-        $scholarshipId = Scholarship::hash()->decode($id);
-        $scholarshipReport = Scholarship::find($scholarshipId[ZERO_INDEX]);
-
-        if ($scholarshipReport) {
-            $counter = $scholarshipReport->reported + FIRST_INDEX;
-            Scholarship::where('id', '=', $scholarshipReport->id)
-                ->update([
-                    'reported' => $counter
-                ]);
-
-            $scholarshipReportStatus['reported'] = $counter;
-            $scholarshipReportStatus['status'] = TRUE;
-        } else {
-            $scholarshipReportStatus['status'] = FALSE;
+        try {
+            $scholarshipId = Scholarship::hash()->decode($scholarshipId);
+            $scholarshipReport = Scholarship::findOrFail($scholarshipId[ZERO_INDEX]);
+            $scholarshipReport->increment('reported');
+            return response()->json(
+                ['result' => 'success'],
+                201,
+                [],
+                JSON_NUMERIC_CHECK
+            );
+        } catch (\Throwable $e) {
+            return response()->json(
+                ['result' => 'error','message' => $e->getMessage()],
+                401,
+                [],
+                JSON_NUMERIC_CHECK
+            );
         }
-        return response()->json($scholarshipReportStatus, 200, [], JSON_NUMERIC_CHECK);
     }
 }
