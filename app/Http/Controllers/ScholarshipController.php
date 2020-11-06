@@ -76,10 +76,10 @@ class ScholarshipController extends Controller
         return response()->json($scholarship, 200, [], JSON_NUMERIC_CHECK);
     }
 
-    public function scholarshipReported($scholarshipId)
+    public function scholarshipReported($id)
     {
         try {
-            $scholarshipId = Scholarship::hash()->decode($scholarshipId);
+            $scholarshipId = Scholarship::hash()->decode($id);
             $scholarshipReport = Scholarship::findOrFail($scholarshipId[ZERO_INDEX]);
             $scholarshipReport->increment('reported');
             return response()->json(
