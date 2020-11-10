@@ -89,9 +89,9 @@ class ScholarshipController extends Controller
             return response()->json( ['result' => 'success'], 200, [], JSON_NUMERIC_CHECK);
 
         } catch (\Throwable $e) {
-            
+
              return response()->json(
-                ['result' => 'error', 'message' => $e->getMessage()],401,[],JSON_NUMERIC_CHECK );
+                ['result' => 'error', 'message' => "duplicate  entry"],401,[],JSON_NUMERIC_CHECK );
         }
             
     }
