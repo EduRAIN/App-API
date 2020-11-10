@@ -10,6 +10,8 @@ use App\Helpers\Obfuscate;
 use App\Models\Criteria;
 use App\Models\CriteriaOption;
 use App\Models\Scholarship;
+use App\Models\ScholarshipReported;
+const ZERO_INDEX = 0;
 
 class ScholarshipController extends Controller
 {
@@ -72,5 +74,25 @@ class ScholarshipController extends Controller
         $scholarship['criteria'] = $assembled;
 
         return response()->json($scholarship, 200, [], JSON_NUMERIC_CHECK);
+    }
+
+    public function scholarshipReported(Request $request)
+    {
+        try {
+            $userId = ScholarshipReported::hash()->decode($request->userId);
+            $scholarshipId = ScholarshipReported::hash()->decode($request->scholarshipId);
+    
+            ScholarshipReported::create([
+                'user_id' => $userId[ZERO_INDEX],
+                'scholarship_id'=> $scholarshipId[ZERO_INDEX]
+                ]);
+            return response()->json( ['result' => 'success'], 200, [], JSON_NUMERIC_CHECK);
+
+        } catch (\Throwable $e) {
+            
+             return response()->json(
+                ['result' => 'error', 'message' => $e->getMessage()],401,[],JSON_NUMERIC_CHECK );
+        }
+            
     }
 }

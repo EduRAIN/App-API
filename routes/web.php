@@ -17,18 +17,19 @@ $router->get('/', function () use ($router){
 
 $router->group(['prefix' => $_ENV['APP_PREFIX']], function () use ($router){
     // Scholarship
-    $router->post('scholarships',                 'ScholarshipController@index');
-    $router->post('scholarships/search',          'ScholarshipController@search');
-    $router->get('scholarship/{id}' ,             'ScholarshipController@fetch');
-    $router->post('scholarship/new',              'ScholarshipController@update');
-    $router->post('scholarship/{id}',             'ScholarshipController@update');
-    $router->delete('scholarship/{id}',           'ScholarshipController@remove');
+    $router->post('scholarships','ScholarshipController@index');
+    $router->post('scholarships/search','ScholarshipController@search');
+    $router->get('scholarship/{id}' ,'ScholarshipController@fetch');
+    $router->post('scholarship/new','ScholarshipController@update');
+    $router->post('scholarship/{id}','ScholarshipController@update');
+    $router->delete('scholarship/{id}','ScholarshipController@remove');
+    $router->post('scholarship-reported','ScholarshipController@scholarshipReported');
 
     // FAFSA Questionnaire
-    $router->get('fafsa/{id}',                    'QuestionController@fetch');
-    $router->post('fafsa/{id}',                   'ResponseController@update');
+    $router->get('fafsa/{id}','QuestionController@fetch');
+    $router->post('fafsa/{id}','ResponseController@update');
 
     // Demographics Profile
-    $router->get('demographics[/{id}]',            'QuestionController@fetch');
-    $router->post('demographics[/{id}]',           'ResponseController@update');
+    $router->get('demographics[/{id}]','QuestionController@fetch');
+    $router->post('demographics[/{id}]','ResponseController@update');
 });
