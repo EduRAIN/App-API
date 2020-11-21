@@ -23,8 +23,19 @@ class QuestionController extends Controller
 
     public function fetch(Request $request, $id = null)
     {
-        $id_int = Fafsa::hash()->decode($id);
+        $id_int = null;
         $demographics = (stripos($request->fullUrl(), '/fafsa') === false);
+
+        if (!$demographics)
+        {
+            $id_int = Fafsa::hash()->decode($id);
+            $fafsa = Fafsa::findOrFail($id_int);
+
+            if ($fafsa->user_id !== Auth::id())
+            {
+                return response()->json(['result' => 'unauthorized'], 403, [], JSON_NUMERIC_CHECK);
+            }
+        }
 
         $questions = DB::connection('sql-app')
                       ->table('Question')

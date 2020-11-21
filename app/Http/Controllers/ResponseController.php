@@ -174,7 +174,7 @@ class ResponseController extends Controller
                         ->whereNotIn('answer_id', $values)
                         ->whereNull('deleted_at')
                         ->update([
-                           'deleted_at' => date('c')
+                             'deleted_at' => date('c')
                           ]);
             }
         }

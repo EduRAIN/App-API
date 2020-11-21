@@ -12,7 +12,7 @@ class CriteriaOption extends Model implements Auditable
 {
     use SoftDeletes;
     use \OwenIt\Auditing\Auditable;
-
+**/
     protected $table = 'Criteria';
     protected $connection = 'sql-app';
 

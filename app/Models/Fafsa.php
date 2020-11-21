@@ -86,7 +86,7 @@ class Fafsa extends Model implements Auditable
     public static function validations()
     {
         $v = [
-
+            'academic_year'  =>  'required|integer|min:2020|max:2024',
         ];
 
         return $v;
