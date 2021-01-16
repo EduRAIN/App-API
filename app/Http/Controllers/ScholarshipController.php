@@ -74,8 +74,8 @@ class ScholarshipController extends Controller
     //Add Scholarship Register
     public function scholarshipRegister(Request $request)
     {
-        $connection = DB::connection('sql-app')->table('scholarship_register');
-        $userId = Auth::id();
+        $connection = DB::connection('mysql')->table('scholarship_register');
+        $userId = $request->input('user_id');
         $scholarships = $connection->where('user_id', $userId)->first();
         $scholarshipArr = [
             'user_id'                      =>  $userId,
@@ -110,7 +110,7 @@ class ScholarshipController extends Controller
     //Get Scholarship Register By User Id
     public function getScholarshipRegister($userId)
     {
-        $scholarships = DB::connection('sql-app')
+        $scholarships = DB::connection('mysql')
             ->table('scholarship_register')
             ->where('user_id', $userId)
             ->first();
