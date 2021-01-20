@@ -12,23 +12,19 @@ use App\Models\Answer;
 use App\Models\Question;
 use App\Models\Response;
 
-
-const KEY = "AKIAIFZN24U6HA2MTMUA";
-const SECRET = "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";
-const REGION = "us-east-2";
-const VERSION = "2014-11-01";
-const ARN = "5e678708-29de-47c5-b578-087e6215664e";
 class ResponseController extends Controller
 {
     public $KmsClient;
+    public $awsArn;
     public function __construct()
     {
+        $this->awsArn = env('AWS_KMS_ARN');
         $this->KmsClient = new \Aws\Kms\KmsClient([
-            'version' => VERSION,
-            'region' => REGION,
+            'version' => env('AWS_VERSION'),
+            'region' => env('AWS_REGION'),
             'credentials' =>  [
-                'key'    => KEY,
-                'secret' => SECRET
+                'key'    => env('AWS_ACCESS_KEY_ID'),
+                'secret' =>  env('AWS_SECRET_KEY')
             ]
         ]);
         // $this->middleware('auth');
@@ -355,7 +351,7 @@ class ResponseController extends Controller
     public function encryptText($key, $text)
     {
         if ($key == NULL) {
-            $key = ARN;
+            $key = $this->awsArn;
         }
         $encrypt = $this->KmsClient->encrypt([
             'EncryptionAlgorithm' => 'RSAES_OAEP_SHA_256',
@@ -370,7 +366,7 @@ class ResponseController extends Controller
     public function decryptText($key, $text)
     {
         if ($key == NULL) {
-            $key = ARN;
+            $key = $this->awsArn;
         }
         $decrypt = $this->KmsClient->decrypt([
             'CiphertextBlob' => $text, // REQUIRED
