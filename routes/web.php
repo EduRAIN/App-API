@@ -36,6 +36,6 @@ $router->group(['prefix' => $_ENV['APP_PREFIX']], function () use ($router) {
 
     // FAFSA Answer
     $router->get('get-user-all-answer/{fafsa_id}/{user_id}', 'ResponseController@getAllAnswer');
-    $router->post('get-user-ssn-key', 'ResponseController@getUseSsnKey');
+    $router->post('add-user-ssn-key', 'ResponseController@addUseSsnKey');
     $router->post('add-user-answer', 'ResponseController@addUserAnswer');
 });

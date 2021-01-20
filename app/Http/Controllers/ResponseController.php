@@ -91,7 +91,8 @@ class ResponseController extends Controller
 
                     // Check for Answer Already Attached
                     if ($demographics) {
-                        if (Response::where('user_id', '=', Auth::id())
+                        if (
+                            Response::where('user_id', '=', Auth::id())
                             ->where('answer_id', '=', $answer->id)
                             ->whereNull('deleted_at')
                             ->count() == 0
@@ -106,7 +107,8 @@ class ResponseController extends Controller
                             ]]);
                         }
                     } else {
-                        if (Response::where('fafsa_id', '=', $fafsa->id)
+                        if (
+                            Response::where('fafsa_id', '=', $fafsa->id)
                             ->where('answer_id', '=', $answer->id)
                             ->whereNull('deleted_at')
                             ->count() == 0
@@ -177,8 +179,7 @@ class ResponseController extends Controller
         $fafsaId = $fafsa_id;
         $userId = $user_id;
         $query = "SELECT q.name AS question,IFNULL(a.name, IFNULL(r.data_boolean, IFNULL(r.data_numeric, IFNULL(r.data_text,IFNULL(r.data_text_secret, r.data_date)))))  AS response , s.encrypt_key AS secret FROM fafsa f LEFT JOIN response r ON r.fafsa_id = f.id LEFT JOIN question q ON q.id = r.question_id LEFT JOIN answer a ON a.id = r.answer_id  LEFT JOIN secret s ON s.response_id=r.id WHERE f.ID = '" . $fafsaId . "' AND  r.user_id ='" . $userId . "' AND r.deleted_at IS NULL";
-        $getAnswerData = DB::connection('sql-app')->select($query);
-
+        $getAnswerData = DB::connection('mysql')->select($query);
         foreach ($getAnswerData as $value) {
             if ($value->question == "user__ssn" || $value->question == "user__key") {
                 $value->response =  $this->decryptText($value->secret, $value->response);
@@ -188,7 +189,7 @@ class ResponseController extends Controller
         return  response()->json($getAnswerData, 200, []);
     }
 
-    public function getUseSsnKey(Request $request)
+    public function addUseSsnKey(Request $request)
     {
         $userId = $request->user_id;
         $encryptKey = $request->encrypt_key;
@@ -198,7 +199,7 @@ class ResponseController extends Controller
         $secretData = array($userSSN, $userKey);
 
         //fetch question id in question table
-        $selectQuestionResponse = DB::connection('sql-app')->table('question')->where('name', 'user__ssn')
+        $selectQuestionResponse = DB::connection('mysql')->table('question')->where('name', 'user__ssn')
             ->orWhere('name', 'user__key')
             ->get();
 
@@ -216,7 +217,7 @@ class ResponseController extends Controller
 
         //user wise fetch all question id
         $allQuestionIdByUser = array();
-        $selectAllQuestionByUserResponse = DB::connection('sql-app')->table('response')->select("question_id")
+        $selectAllQuestionByUserResponse = DB::connection('mysql')->table('response')->select("question_id")
             ->where("user_id", $userId)
             ->get();
         foreach ($selectAllQuestionByUserResponse as $value) {
@@ -229,12 +230,12 @@ class ResponseController extends Controller
                 if (in_array($questionId[$i], $allQuestionIdByUser)) {
                     $jsonResponse['msg'] = "This question answer already added";
                 } else {
-                    $fetchResponseQueryData = DB::connection('sql-app')->table('response')->orderBy('id', 'desc')->first();
+                    $fetchResponseQueryData = DB::connection('mysql')->table('response')->orderBy('id', 'desc')->first();
                     // answer id auto increment
                     $answerId = $fetchResponseQueryData->id + 1;
 
                     //Insert data into response table
-                    DB::connection('sql-app')->table('response')->insert(
+                    DB::connection('mysql')->table('response')->insert(
                         [
                             'id' => $answerId,
                             'fafsa_id' => 1,
@@ -245,7 +246,7 @@ class ResponseController extends Controller
                     );
 
                     //Insert data into secret table
-                    $response = DB::connection('sql-app')->table('secret')->insert(
+                    $response = DB::connection('mysql')->table('secret')->insert(
                         [
                             'response_id' => $answerId,
                             'encrypt_key' => $encryptKey,
@@ -271,7 +272,7 @@ class ResponseController extends Controller
     {
         if ((!empty($request->fafsa_id) && !empty($request->user_id) && !empty($request->question_id)) && (($request->data_boolean != NULL) || ($request->data_numeric != NULL) || ($request->data_text != NULL) || ($request->data_date != NULL))) {
             //fetch question id in question table
-            $selectQuestionResponse = DB::connection('sql-app')->table('question')->where('name', 'user__ssn')
+            $selectQuestionResponse = DB::connection('mysql')->table('question')->where('name', 'user__ssn')
                 ->orWhere('name', 'user__key')
                 ->get();
             $questionId = array();
@@ -287,7 +288,7 @@ class ResponseController extends Controller
 
             //user wise fetch all question id
             $allQuestionIdByUser = array();
-            $selectAllQuestionByUserResponse = DB::connection('sql-app')->table('response')->select("question_id")
+            $selectAllQuestionByUserResponse = DB::connection('mysql')->table('response')->select("question_id")
                 ->where("user_id", $request->user_id)
                 ->get();
             foreach ($selectAllQuestionByUserResponse as $value) {
@@ -301,7 +302,7 @@ class ResponseController extends Controller
                 if (in_array($request->question_id, $questionId)) {
                     $jsonResponse['msg'] = "Not add SSN and KEY in this api";
                 } else {
-                    $fetchResponseQueryData = DB::connection('sql-app')->table('response')->orderBy('id', 'desc')->first();
+                    $fetchResponseQueryData = DB::connection('mysql')->table('response')->orderBy('id', 'desc')->first();
 
                     // answer id auto increment
                     $answerId = $fetchResponseQueryData->id + 1;
@@ -328,7 +329,7 @@ class ResponseController extends Controller
                     }
 
                     //Insert data into response table
-                    $response = DB::connection('sql-app')->table('response')->insert([
+                    $response = DB::connection('mysql')->table('response')->insert([
                         'id' => $answerId,
                         'fafsa_id' => $request->fafsa_id,
                         'user_id' => $request->user_id,
