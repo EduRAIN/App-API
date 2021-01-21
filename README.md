@@ -28,7 +28,7 @@ Laravel PHP back-end for user-facing webapp
    AWS_VERSION = 2014-11-01
    AWS_KMS_ARN = 5e678708-29de-47c5-b578-087e6215664e
 
-4. run the project
+4. Run This Route URL: http://localhost/App-API/public
 
 # Roadmap
 
