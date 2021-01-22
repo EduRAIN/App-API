@@ -11,15 +11,15 @@
 |
 */
 
-$router->get('/', function () use ($router){
+$router->get('/', function () use ($router) {
     return $_ENV['APP_ENV'] == 'prod' ? null : $router->app->version();
 });
 
-$router->group(['prefix' => $_ENV['APP_PREFIX']], function () use ($router){
+$router->group(['prefix' => $_ENV['APP_PREFIX']], function () use ($router) {
     // Scholarship
     $router->post('scholarships',                 'ScholarshipController@index');
     $router->post('scholarships/search',          'ScholarshipController@search');
-    $router->get('scholarship/{id}' ,             'ScholarshipController@fetch');
+    $router->get('scholarship/{id}',             'ScholarshipController@fetch');
     $router->post('scholarship/new',              'ScholarshipController@update');
     $router->post('scholarship/{id}',             'ScholarshipController@update');
     $router->delete('scholarship/{id}',           'ScholarshipController@remove');
@@ -33,4 +33,8 @@ $router->group(['prefix' => $_ENV['APP_PREFIX']], function () use ($router){
     // Demographics Profile
     $router->get('demographics[/{id}]',           'QuestionController@fetch');
     $router->post('demographics[/{id}]',          'ResponseController@update');
+
+    //Scholarship Register
+    $router->post('scholarship-register', 'ScholarshipController@scholarshipRegister');
+    $router->get('get-scholarship-register/{userId}', 'ScholarshipController@getScholarshipRegister');
 });
