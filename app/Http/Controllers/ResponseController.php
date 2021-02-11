@@ -174,19 +174,8 @@ class ResponseController extends Controller
 
         $fafsaId = $fafsa_id;
         $userId = $user_id;
-        $query = "SELECT q.name AS question,IFNULL(a.name, IFNULL(r.data_boolean, IFNULL(r.data_numeric, IFNULL(r.data_text,IFNULL(r.data_text_secret, r.data_date)))))  AS response , s.encrypt_key AS secret FROM fafsa f LEFT JOIN response r ON r.fafsa_id = f.id LEFT JOIN question q ON q.id = r.question_id LEFT JOIN answer a ON a.id = r.answer_id  LEFT JOIN secret s ON s.response_id=r.id WHERE f.ID = '" . $fafsaId . "' AND  r.user_id ='" . $userId . "' AND r.deleted_at IS NULL";
+        $query = "SELECT q.name AS question,IFNULL(a.name, IFNULL(r.data_boolean, IFNULL(r.data_numeric, IFNULL(r.data_text,IFNULL(r.data_text_secret, r.data_date)))))  AS response  FROM fafsa f LEFT JOIN response r ON r.fafsa_id = f.id LEFT JOIN question q ON q.id = r.question_id LEFT JOIN answer a ON a.id = r.answer_id   WHERE f.ID = '" . $fafsaId . "' AND  r.user_id ='" . $userId . "' AND r.deleted_at IS NULL";
         $getAnswerData = DB::connection('mysql')->select($query);
-        $getAnswerData[] = 
-            [
-                'question' => 'user__ssn',
-                'response' => rand(111,999).rand(00,99).rand(0000,9999),
-                'secret' => null
-            ];
-            $getAnswerData[] =    [
-                'question' => 'user__key',
-                'response' => "".rand(1000,9999)."",
-                'secret' => null
-            ];
         return  response()->json($getAnswerData, 200, []);
     }
 
